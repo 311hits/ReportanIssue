@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COH Smartphone App</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="scripts/Main.js"></script>
+    <script type="text/javascript" charset="utf-8" src="scripts/Photo.js"></script>
+    
+    <script src="scripts/app.js"></script>
+    <script src="kendo/js/jquery.min.js"></script>
+    <script src="kendo/js/kendo.mobile.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>    
+    <script src="https://bs-static.cdn.telerik.com/1.2.5/everlive.all.min.js"></script>
+    <script src="https://bs-static.cdn.telerik.com/1.4.1/everlive.all.min.js"></script>
+
+</head>
+<body>
+
+    <script>user="xxx";fileUri="none";tresultEmail="none";</script>
+    <style>
+    .km-help:after,
+    .km-help:before
+    {
+        content: "\e0fb";
+    }
+</style>
+    <div data-role="view" id="map" data-title="City of Houston" data-show="showMap" data-stretch="true">
+        <header data-role="header" class="header">
+             <div data-role="navbar">
+               <a href="#" onClick="window.open('http://www.houstontx.gov/', '_blank')"><img src="kendo/styles/images/COHLOGO-3.png"  style=" width:48px; height:48px" align="left"></img></a> 
+               <span style="font-size:20px; color:#ffffff; font-family: Times New Roman; font-weight: bold" data-role="view-title"></span>
+               <a href="#" onClick="window.open('http://m.houston311.org/', '_blank')"><img src="kendo/styles/images/logo.png" style=" width:50px; height:50px" align="right"></img></a>
+             </div>
+        </header>
+        
+        <div>
+
+                <aa data-role="button" id="Dead Animal"       href="#DeadAnimal"       data-role="touch" style="margin: 1% 1% 1% 1%; width:22%; height: 22%; font-size:9pt; font-weight: bold; color: #000e95" data-rel="modalview">Report<br>Dead<br>Animal</aa>
+                <aa data-role="button" id="Property Nuisance" href="#PropertyNuisance" data-role="touch" style="margin: 1% 1% 1% 1%; width:22%; height: 22%; font-size:9pt; font-weight: bold; color: #000e95" data-rel="modalview">Report<br>Property<br>Nuisance</aa>
+                <aa data-role="button" id="Pothole Issue"     href="#PotholeIssue"     data-role="touch" style="margin: 1% 1% 1% 1%; width:22%; height: 22%; font-size:9pt; font-weight: bold; color: #000e95" data-rel="modalview">Report<br>Pothole<br>Issue</aa>
+                <aa data-role="button" id="Water Leak"        href="#WaterLeak"        data-role="touch" style="margin: 1% 1% 1% 1%; width:22%; height: 22%; font-size:9pt; font-weight: bold; color: #000e95" data-rel="modalview">Report<br>Water<br>Leak</aa>
+  
+            <p id="demo"></p>
+
+            <div data-role="modalview" id="DeadAnimal" style="width: 60%; height: 50%">
+                     <div data-role="header">
+                            <div data-role="navbar">
+                                 <span>Select the Surface</span>
+                            </div>
+                     </div>
+               <ul data-role="listview" data-style="inset" align="center">
+                         <li>                             
+                            <button class="user"  style="width:100px; height:40px" value="Curb"   data-name="Curb">Curb</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" value="Street" data-name="Street">Street</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" value="Park"   data-name="Park">Park</button>
+                             <br>
+                             <br>
+                            <button class="close" style="width:90px; height:40px">Cancel</button>
+                        </li>
+                </ul>
+   		    </div> 
+                 
+            
+          <div data-role="modalview" id="PropertyNuisance" style="width: 60%; height: 70%">
+                     <div data-role="header">
+                            <div data-role="navbar">
+                                 <span>Select the Type</span>
+                             </div>
+                     </div>
+               <ul data-role="listview" data-style="inset" align="center">
+                         <li>                             
+                            <button class="user"   style="width:140px; height:40px"   data-name="Weeds/Brush">Weeds/Brush</button>
+                             <br>
+                            <button class="user"   style="width:140px; height:40px"   data-name="Trash/Rubbish">Trash/Rubbish</button>
+                             <br>
+                            <button class="user"   style="width:140px; height:40px"   data-name="Graffiti">Graffiti</button>
+                             <br>
+                            <button class="user"   style="width:140px; height:40px"   data-name="Exterior Storage">Exterior Storage</button>
+                             <br>
+                            <button class="user"   style="width:140px; height:40px"   data-name="Water Accumulation">Water Accumulation</button>
+                             <br>
+                            <button class="user"   style="width:140px; height:40px"   data-name="Presense of Urine">Presense of Urine</button>
+                             <br>
+                             <br>
+                            <button class="close"  style="width:90px; height:40px">Cancel</button>
+                        </li>
+                </ul>
+               </div> 
+            
+            <div data-role="modalview" id="PotholeIssue" style="width: 60%; height: 63%">
+                     <div data-role="header">
+                            <div data-role="navbar">
+                                 <span>Select the Surface</span>
+                             </div>
+                     </div>
+               <ul data-role="listview" data-style="inset" align="center">
+                         <li>                             
+                            <button class="user"  style="width:100px; height:40px" data-name="Asphalt">Asphalt</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" data-name="Concrete">Concrete</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" data-name="Brick">Brick</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" data-name="Unimproved">Unimproved</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" data-name="Unknown">Unknown</button>
+                             <br>
+                             <br>
+                            <button class="close"  style="width:90px; height:40px">Cancel</button>
+                        </li>
+                 </ul>
+            </div> 
+            
+
+            <div data-role="modalview" id="WaterLeak" style="width: 60%; height: 63%">
+                     <div data-role="header">
+                            <div data-role="navbar">
+                                 <span>Select the Surface</span>
+                             </div>
+                     </div>
+               <ul data-role="listview" data-style="inset" align="center">
+                         <li>                             
+                            <button class="user"  style="width:100px; height:40px" data-name="Water Main">Water Main</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" data-name="Service Line">Service Line</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" data-name="Water Meter">Water Meter</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" data-name="Valve">Valve</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" data-name="Fire Hydrant">Fire Hydrant</button>
+                             <br>
+                             <br>
+                            <button class="close" style="width:90px; height:40px">Cancel</button>
+                        </li>
+               </ul>
+            </div>     
+                       
+        <center>
+           <a data-role="button"  style="font-size:14px; font-weight:bold; color:#E60000; padding-left: 10px; width: 95%; 
+              margin-right: 10px" id="addressBar" onclick="GetGeolocation()"></a><font size=-3>click address above to refresh standing location</font>
+        </center>    
+  
+       <div id="map_canvas"  style="width: 95%; height: 70%; position: absolute; margin-top: 5px; margin-left: 8px; 
+                                    margin-right: 10px" onclick="GetAlert()"></div>     
+            
+        </div>
+    
+        <footer data-role="footer" class="footer">
+             <div data-role="tabstrip" data-select="selectEvent">   
+                 <a data-icon="add"    onclick="AddEmail()">Add Email</a>
+                 <a data-icon="camera" onclick="addImage()">Photo</a>
+                 <a data-icon="action" onclick="submitClick()">Submit</a>
+                 <a data-icon="help" href="#Help"  data-rel="modalview">Help</a>
+                 <a data-icon="about" href="#About"  data-rel="modalview">About</a>
+             </div>
+             
+            
+            <div data-role="modalview" id="Help" style="width: 80%; height: 81%">
+                     <div data-role="header">
+                            <div data-role="navbar">
+                                 <span>Help&nbsp;&nbsp;&nbsp;</span>
+                             </div>
+                     </div>
+               <ul data-role="listview" data-style="inset">
+                         <li>                             
+                           <p><font size=-1>
+                               1- turn on device GPS<br><br>
+                               2- select an <b>Issue</b> button above to specify the issue type<br><br>
+                               3- click <b>Submit</b> button below to create a 311 Service Request<br><br>
+                               
+                               *optional- enter an <b>Email</b> address to receive notifications<br>
+                               *optional- take and send <b>Photo</b> with your issue<br><br>
+                               <font color="navy">
+                               *feature- touch address bar to refresh standing location<br>
+                               *feature- drag and touch map to change location and address<br><br>
+                               </font>
+                               </p></font>
+                              <center><button class="close" style="width:90px; height:40px">Close</button></center>
+                        </li>
+               </ul>
+            </div>    
+            <div data-role="modalview" id="About" style="width: 62%; height: 70%">
+                     <div data-role="header">
+                            <div data-role="navbar">
+                                 <span>About&nbsp;&nbsp;&nbsp;</span>
+                             </div>
+                     </div>
+               <ul data-role="listview" data-style="inset">
+                         <li>                             
+                           <p><b>
+                               311 Issues App #1<br>
+                               Version 1.2 11.30.15<br>
+                               City of Houston, TX<br><br><font size=-1 color="green">
+                               App V2.0 to include:<br></b>
+                                  -dynamic geolocation<br>
+                                  -more case types</font><br><br><b>
+                               Contact us:<br></b>
+                               <a href="tel:713-837-0311" data-rel="external">713-837-0311</a><br>
+                               <a href="mailto:311HITS@houstontx.gov" data-rel="external">311HITS@houstontx.gov</a><br><br>
+                            </p>
+                             <center><button class="close" style="width:90px; height:40px">Close</button></center>
+                            <p>
+                                <br><font size=-2>&nbsp;&nbsp;&nbsp;COH.HITS.EAS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SR&JC</font>
+                             </p>     
+                   </li>
+               </ul>
+            </div>     
+            
+        </footer>  
+ 
+   </div>
+
+   <script>
+            
+	        var options = { timeout: 15000, enableHighAccuracy: true };
+			navigator.geolocation.getCurrentPosition(GetPosition, PositionError, options);
+						
+			function GetPosition(position)
+							{
+								  latitude = position.coords.latitude;
+								  longitude = position.coords.longitude;
+								  var reverseGeocoder = new google.maps.Geocoder();
+                         	      var currentPosition = new google.maps.LatLng(latitude, longitude);
+                
+							      reverseGeocoder.geocode({'latLng': currentPosition}, function(results, status) {
+						 
+									if (status == google.maps.GeocoderStatus.OK) {
+										if (results[0]) {
+                                         document.getElementById("addressBar").innerHTML = results[0].formatted_address;
+                                         haddress = results[0].formatted_address;                                     
+										}
+									else {
+										navigator.notification.alert('Unable to detect your address.');
+										}
+								} else {
+									navigator.notification.alert('Unable to detect your address.');
+								}
+							});
+							}
+			 				 
+		     function PositionError() {
+								  navigator.notification.alert('Could not find the current location.\n\nTurn on device GPS.');
+							}
+
+             function GetGeolocation(){
+                  var options = { timeout: 30000, enableHighAccuracy: true };
+                  navigator.geolocation.getCurrentPosition(GetPosition, PositionError, options); 
+                  $('#addressBar').on('click',showMap);
+                    }		
+
+             function GetAlert(){
+                 navigator.notification.alert(haddress, value);
+             }
+
+             function submitClick(){
+                
+                 if(user === "xxx"){
+                     alert("Please select an Issue.");
+                    
+                 }
+                 
+                 else{
+                              
+                     if(fileUri != "none" && tresultEmail != "null" && tresultEmail != ""){
+                         fileUriYN = "yes";
+                     }
+                     else{
+                         fileUriYN = "no";
+                     }
+                     
+                  answer = confirm("Issue: "+ SRtype +'\n'+ "Surface: "+ user +'\n'+ "Address: "+ haddress +'\n'+ "Email: "+ tresultEmail +'\n'+ "Photo: "+ fileUriYN );
+                  //alert(answer);
+                  InfoSCF= SRtype +' | '+ user +' | '+ haddress +' | '+ latitude +' | '+ longitude +' | '+ tresultEmail +' | '+ fileUri;
+                     
+                  //alert("Debug-->    "+InfoSCF+"    [This message will be removed when app is in production]");
+                     
+                     if(fileUri != "none"){
+                  			//prompt("Copy Link below and paste in browers to see photo (debug msg)",fileUri);
+                     }
+                  
+                  if(answer == true){
+                      //user="xxx";fileUri="none";tresultEmail="none";
+                      user="xxx";fileUri="none";
+                      var xmlhttp = new XMLHttpRequest();
+                      xmlhttp.open("Get","http://api.everlive.com/v1/4ud6CtLL0aBS5KD5/Functions/COHAppEmail?Info=" + InfoSCF,true);
+                      xmlhttp.send();
+                      alert("Your issue has been sent to 311.\n\n       Keep Houston Beautiful.")
+                     }
+                 }
+             }
+     
+  		     function AddEmail(){
+                 if(tresultEmail != "none" && tresultEmail != "null" && tresultEmail != "")
+                     {
+                          //alert("0-"+tresultEmail+"<");
+                          emailhold = tresultEmail;
+                          resultEmail = prompt("Add email for notifications: ", tresultEmail);
+//inputemail();
+                             if (resultEmail == "" || resultEmail == "null" || resultEmail == "none" || resultEmail == null) {
+                                	  tresultEmail = emailhold;
+                                 //alert("1-"+tresultEmail);
+                               
+                            }
+                         //alert("2-"+tresultEmail);
+                     }
+                 else
+                     {
+                         //alert("3-"+tresultEmail);
+                         tresultEmail = "";
+                         resultEmail = prompt("Add email to receive notifications: ", tresultEmail);
+//inputemail();
+                         //alert("x-"+resultEmail+"<");
+               			 if (resultEmail == "" || resultEmail == "null" || resultEmail == "none" || resultEmail == null) {
+                                	  tresultEmail = "none";
+                                 //alert("4-"+tresultEmail);
+                            }
+                         else
+                             {tresultEmail = resultEmail};
+                         //alert("5-"+tresultEmail);
+                     }
+  		   }
+         
+                         
+                    $(document).ready(function() {
+                                              
+                        $(".user").click(function() {
+                            user = $(this).attr("data-name");
+                                                   
+                         if(user==='Curb'||user==='Street'||user==='Park'){
+                            SRtype = "DeadAnimal";
+                         }
+                         else if(user==='Weeds/Brush'||user==='Trash/Rubbish'||user==='Graffiti'||user==='Exterior Storage'||user==='Water Accumulation'||user==='Presense of Urine'){
+                             SRtype= "Property Nuisance";
+                         }
+                         else if(user==='Asphalt'||user==='Concrete'||user==='Brick'||user==='Unimproved'||user==='Unknown'){
+                             SRtype= "Pothole Issue";
+                         }
+                         else if(user==='Water Main'||user==='Service Line'||user==='Water Meter'||user==='Valve'||user==='Fire Hydrant'){
+                             SRtype= "Water Leak";
+                         }
+                            //alert(SRtype+ " - " +user);                             
+                            $('#DeadAnimal').data("kendoMobileModalView").close();
+                            $('#PropertyNuisance').data("kendoMobileModalView").close();
+                            $('#PotholeIssue').data("kendoMobileModalView").close();
+                            $('#WaterLeak').data("kendoMobileModalView").close();
+                            $('#Help').data("kendoMobileModalView").close();
+                            $('#About').data("kendoMobileModalView").close();
+                        });
+                     
+                        $(".close").click(function() {
+                            $('#DeadAnimal').data("kendoMobileModalView").close();
+                       		$('#PropertyNuisance').data("kendoMobileModalView").close();
+                        	$('#PotholeIssue').data("kendoMobileModalView").close();
+                       		$('#WaterLeak').data("kendoMobileModalView").close(); 
+                            $('#Help').data("kendoMobileModalView").close();
+                            $('#About').data("kendoMobileModalView").close();
+                        });
+                    });
+               
+              
+               
+         </script>
+        
+   <script>
+     var app = new kendo.mobile.Application(document.body, { skin: "nova" });
+   </script>
+
+</body>
+</html>
