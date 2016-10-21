@@ -14,8 +14,7 @@
     <script src="kendo/js/jquery.min.js"></script>
     <script src="kendo/js/kendo.mobile.min.js"></script>
     <script src="http://maps.google.com/maps/api/js?sensor=true"></script>    
-    <script src="https://bs-static.cdn.telerik.com/1.2.5/everlive.all.min.js"></script>
-    <script src="https://bs-static.cdn.telerik.com/1.4.1/everlive.all.min.js"></script>
+    <script src="https://bs-static.cdn.telerik.com/latest/everlive.all.js"></script>
 
 </head>
 <body>
@@ -39,11 +38,10 @@
         
         <div>
 
-                <aa data-role="button" id="Dead Animal"       href="#DeadAnimal"       data-role="touch" style="margin: 1% 1% 1% 1%; width:22%; height: 22%; font-size:9pt; font-weight: bold; color: #000e95" data-rel="modalview">Report<br>Dead<br>Animal</aa>
-                <aa data-role="button" id="Property Nuisance" href="#PropertyNuisance" data-role="touch" style="margin: 1% 1% 1% 1%; width:22%; height: 22%; font-size:9pt; font-weight: bold; color: #000e95" data-rel="modalview">Report<br>Property<br>Nuisance</aa>
-                <aa data-role="button" id="Pothole Issue"     href="#PotholeIssue"     data-role="touch" style="margin: 1% 1% 1% 1%; width:22%; height: 22%; font-size:9pt; font-weight: bold; color: #000e95" data-rel="modalview">Report<br>Pothole<br>Issue</aa>
-                <aa data-role="button" id="Water Leak"        href="#WaterLeak"        data-role="touch" style="margin: 1% 1% 1% 1%; width:22%; height: 22%; font-size:9pt; font-weight: bold; color: #000e95" data-rel="modalview">Report<br>Water<br>Leak</aa>
-  
+                <aa data-role="button" id="Dead Animal"       href="#DeadAnimal"       data-role="touch" style="margin: 1% 1% 1% 1%; width:22%; height: 22%; font-size:9pt; font-weight: bold; color: #000e95; background-color:whitesmoke" data-rel="modalview">Report<br>Dead<br>Animal</aa>
+                <aa data-role="button" id="Property Nuisance" href="#PropertyNuisance" data-role="touch" style="margin: 1% 1% 1% 1%; width:22%; height: 22%; font-size:9pt; font-weight: bold; color: #000e95; background-color:whitesmoke" data-rel="modalview">Report<br>Property<br>Nuisance</aa>
+                <aa data-role="button" id="Pothole Issue"     href="#PotholeIssue"     data-role="touch" style="margin: 1% 1% 1% 1%; width:22%; height: 22%; font-size:9pt; font-weight: bold; color: #000e95; background-color:whitesmoke" data-rel="modalview">Report<br>a<br>Pothole<br></aa>
+                <aa data-role="button" id="Water Leak"        href="#WaterLeak"        data-role="touch" style="margin: 1% 1% 1% 1%; width:22%; height: 22%; font-size:9pt; font-weight: bold; color: #000e95; background-color:whitesmoke" data-rel="modalview">Report<br>Water<br>Leak</aa>
             <p id="demo"></p>
 
             <div data-role="modalview" id="DeadAnimal" style="width: 60%; height: 50%">
@@ -121,7 +119,7 @@
             <div data-role="modalview" id="WaterLeak" style="width: 60%; height: 63%">
                      <div data-role="header">
                             <div data-role="navbar">
-                                 <span>Select the Surface</span>
+                                 <span>Select the Type</span>
                              </div>
                      </div>
                <ul data-role="listview" data-style="inset" align="center">
@@ -140,10 +138,37 @@
                             <button class="close" style="width:90px; height:40px">Cancel</button>
                         </li>
                </ul>
+            </div>
+            
+            <div data-role="modalview" id="WaterLeak1" style="width: 60%; height: 63%">
+                     <div data-role="header">
+                            <div data-role="navbar">
+                                 <span>Severity of the Leak</span>
+                             </div>
+                     </div>
+                
+                
+               <ul data-role="listview" data-style="inset" align="center">
+                         <li>                             
+                            <button class="user"  style="width:100px; height:40px" data-name="Trickling">Trickling</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" data-name="Bubbling">Bubbling</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" data-name="Steady Flow">Steady Flow</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" data-name="Gushing">Gushing</button>
+                             <br>
+                            <button class="user"  style="width:100px; height:40px" data-name="Geyser">Geyser</button>
+                             <br>
+                             <br>
+                            <button class="close" style="width:90px; height:40px">Cancel</button>
+                        </li>
+               </ul>
             </div>     
+            
                        
         <center>
-           <a data-role="button"  style="font-size:14px; font-weight:bold; color:#E60000; padding-left: 10px; width: 95%; 
+           <a data-role="button"  style="font-size:14px; font-weight:bold; color:#E60000; background-color:whitesmoke; padding-left: 10px; width: 95%; 
               margin-right: 10px" id="addressBar" onclick="GetGeolocation()"></a><font size=-3>click address above to refresh standing location</font>
         </center>    
   
@@ -156,7 +181,7 @@
              <div data-role="tabstrip" data-select="selectEvent">   
                  <a data-icon="add"    onclick="AddEmail()">Add Email</a>
                  <a data-icon="camera" onclick="addImage()">Photo</a>
-                 <a data-icon="action" onclick="submitClick()">SUBMIT</a>
+                 <a data-icon="action" onclick="sendEmail()"><b>SUBMIT</b></a>
                  <a data-icon="help" href="#Help"  data-rel="modalview">Help</a>
                  <a data-icon="about" href="#About"  data-rel="modalview">About</a>
              </div>
@@ -172,7 +197,7 @@
                          <li>                             
                            <p><font size=-1>
                                1- turn on device GPS<br>
-                               2- select an <b>Issue</b> button above to specify the issue type<br>
+                               2- select <b> Pothole</b> button above to specify the issue type<br>
                                3- click <b>Submit</b> button below to create a 311 Service Request<br><br>
                                
                                *optional- enter an <b>Email</b> address to receive notifications<br>
@@ -196,9 +221,9 @@
                          <li>                             
                            <p><b>
                                311 Issues App #1<br>
-                               Version 1.2 11.30.15<br>
+                               Version 2.01.28.16<br>
                                City of Houston, TX<br><br><font size=-1 color="green">
-                               App V2.0 to include:<br></b>
+                               App V3.0 to include:<br></b>
                                   -dynamic geolocation<br>
                                   -more case types</font><br><br><b>
                                Contact us:<br></b>
@@ -221,7 +246,7 @@
             
 	        var options = { timeout: 15000, enableHighAccuracy: true };
 			navigator.geolocation.getCurrentPosition(GetPosition, PositionError, options);
-						
+		   // For getting the address code//	
 			function GetPosition(position)
 							{
 								  latitude = position.coords.latitude;
@@ -258,8 +283,10 @@
              function GetAlert(){
                  navigator.notification.alert(haddress, value);
              }
+             
+             //Executing Cloud Functions Programmatically - send email
 
-             function submitClick(){
+              function sendEmail(){
                 
                  if(user === "xxx"){
                      alert("Please select an Issue.");
@@ -289,12 +316,15 @@
                       //user="xxx";fileUri="none";tresultEmail="none";
                       user="xxx";fileUri="none";
                       var xmlhttp = new XMLHttpRequest();
-                      xmlhttp.open("Get","http://api.everlive.com/v1/4ud6CtLL0aBS5KD5/Functions/COHAppEmail?Info=" + InfoSCF,true);
+                      xmlhttp.open("Get","http://api.everlive.com/v1/4ud6CtLL0aBS5KD5/Functions/EmailRequest?Info=" + InfoSCF,true);
                       xmlhttp.send();
                       alert("Your issue has been sent to 311.\n\n       Keep Houston Beautiful.")
                      }
                  }
              }
+
+             //end of executing cloud function programmatically - send email 
+             
      
   		     function AddEmail(){
                  if(tresultEmail != "none" && tresultEmail != "null" && tresultEmail != "")
