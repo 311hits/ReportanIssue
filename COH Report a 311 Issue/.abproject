@@ -2,7 +2,7 @@
   "ProjectName": "COH Report a 311 Issue",
   "ProjectGuid": "4b670070-a1e1-4686-9666-ce3cc0d2600e",
   "projectVersion": 1,
-  "AppIdentifier": "com.telerik.COH_Report_an_Issue",
+  "AppIdentifier": "com.telerik.COHReportanIssue",
   "DisplayName": "Report an Issue",
   "Author": "COH HITS EAS",
   "Description": "City of Houston Report an Issue to 311",
@@ -12,16 +12,23 @@
     "1",
     "2"
   ],
-  "iOSBackgroundMode": [],
+  "iOSBackgroundMode": [
+    "location",
+    "fetch",
+    "remote-notification"
+  ],
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
-  "FrameworkVersion": "3.7.0",
+  "FrameworkVersion": "4.0.0",
   "AndroidPermissions": [
+    "android.permission.ACCESS_COARSE_LOCATION",
+    "android.permission.ACCESS_FINE_LOCATION",
+    "android.permission.CAMERA",
     "android.permission.INTERNET"
   ],
   "DeviceOrientations": [
     "Portrait"
   ],
-  "AndroidHardwareAcceleration": "True",
+  "AndroidHardwareAcceleration": "true",
   "iOSStatusBarStyle": "Default",
   "Framework": "Cordova",
   "WP8TileTitle": "",
@@ -47,18 +54,21 @@
     "ID_RESOLUTION_HD720P"
   ],
   "CorePlugins": [
-    "org.apache.cordova.camera",
-    "org.apache.cordova.device",
-    "org.apache.cordova.dialogs",
-    "org.apache.cordova.file",
-    "org.apache.cordova.file-transfer",
-    "org.apache.cordova.geolocation",
-    "org.apache.cordova.globalization",
-    "org.apache.cordova.inappbrowser",
-    "org.apache.cordova.keyboard",
-    "org.apache.cordova.media",
-    "org.apache.cordova.media-capture",
-    "org.apache.cordova.network-information",
-    "org.apache.cordova.splashscreen"
-  ]
+    "cordova-plugin-camera",
+    "cordova-plugin-console",
+    "cordova-plugin-device",
+    "cordova-plugin-dialogs",
+    "cordova-plugin-file",
+    "cordova-plugin-file-transfer",
+    "cordova-plugin-geolocation",
+    "cordova-plugin-globalization",
+    "cordova-plugin-inappbrowser",
+    "cordova-plugin-media",
+    "cordova-plugin-media-capture",
+    "cordova-plugin-network-information",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-whitelist",
+    "org.apache.cordova.labs.keyboard"
+  ],
+  "iOSDeploymentTarget": "8.4"
 }
